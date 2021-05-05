@@ -1,7 +1,7 @@
 module.exports = {
   title: 'mls公共组件库说明文档',  // 设置网站标题
   description : '',
-  base : process.env.NODE_ENV === 'production' ? 'https://ph2017.github.io/mls-common-ui/dist/' : '/',
+  base : process.env.NODE_ENV === 'production' ? '/mls-common-ui/dist/' : '/',
   markdown: {
     plugins: ['task-lists']
   },
