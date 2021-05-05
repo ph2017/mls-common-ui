@@ -1,7 +1,7 @@
 module.exports = {
   title: 'mls公共组件库说明文档',  // 设置网站标题
   description : '',
-  base : '/',
+  base : '/dist/',
   markdown: {
     plugins: ['task-lists']
   },
