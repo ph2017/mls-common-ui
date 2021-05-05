@@ -1,7 +1,7 @@
 module.exports = {
   title: 'mls公共组件库说明文档',  // 设置网站标题
   description : '',
-  base : 'https://ph2017.github.io/mls-common-ui/dist/',
+  base : process.env.NODE_ENV === 'production' ? 'https://ph2017.github.io/mls-common-ui/dist/' : '/',
   markdown: {
     plugins: ['task-lists']
   },
@@ -27,7 +27,8 @@ module.exports = {
     nav: [
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/' },
-      { text: 'Gitee', link: 'https://www.baidu.com' },
+      { text: '表单生成器', link: 'https://form.lljj.me/schema-generator.html#/index' },
+      { text: 'Github', link: 'https://github.com/ph2017/mls-common-ui' },
     ],
     sidebar: [{
         title: '指南',
