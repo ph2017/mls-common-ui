@@ -1,8 +1,10 @@
 {
-  "name": "@yueyun/mls-common-ui",
-  "version": "0.1.0",
+  "name": "mls-common-ui",
+  "version": "0.1.2",
+  "description": "mls项目的公共组件库",
   "private": false,
   "main":"lib/@yueyun/mls-common-ui.common.js",
+  "auth": "billa2021",
   "scripts": {
     "build": "vue-cli-service build --target lib --name @yueyun/mls-common-ui --dest lib ./src/packages/index.js",
     "lint": "vue-cli-service lint",
