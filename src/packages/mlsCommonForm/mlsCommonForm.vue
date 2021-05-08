@@ -147,10 +147,18 @@ export default {
             const validate = await elForm.validate().catch(result => {
                 return result
             })
-            this.$emit('on-submit', {
-                formData: form,
-                validate
-            })
+            if (validate) {
+                this.$emit('on-submit', {
+                    formData: form,
+                    validate
+                })
+            } else {
+                this.$emit('on-validation-failed', {
+                    formData: form,
+                    validate
+                })
+            }
+
         },
         onFormSubmit (formData, formRefFn) {
             this.submitHandler(formData, formRefFn)
