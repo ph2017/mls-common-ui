@@ -12,14 +12,14 @@ MlsCommonTable组件是由[lb-element-table](https://github.com/liub1934/lb-elem
 ## 快速开始
 ``` bash
 # 安装
-npm install --save @yueyun/mls-common-ui
+npm install --save mls-common-ui
 
 # 或者：
-yarn add @yueyun/mls-common-ui
+yarn add mls-common-ui
 ```
 * 使用
 ```js
-import { MlsCommonForm } from '@yueyun/mls-common-ui';
+import { MlsCommonForm } from 'mls-common-ui';
 import Vue from 'vue';
 
 // 全局注册
@@ -42,7 +42,7 @@ export default {
 <template>
     <mls-common-form
         v-model="formData"
-        :ui-schema="uiSchema"
+        :uiSchema="uiSchema"
         :schema="schema"
     >
     </mls-common-form>
@@ -84,7 +84,8 @@ export default {
                         placeholder: '请输入你的签名',
                         type: 'textarea',
                         rows: 1
-                    }
+                    },
+                    'ui:canBeClose': true // 这个参数表示这个项可以被收起
                 }
             }
         };

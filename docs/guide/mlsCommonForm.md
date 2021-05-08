@@ -1,7 +1,7 @@
 # MlsCommonForm
 MlsCommonForm组件是由[Vue JSON Schema Form](https://vue-json-schema-form.lljj.me/)这个组件二次封装而来。
 主要能实现以下功能：  
-1. 通过json配置生成表单项，依赖父项目的ElementUI库
+1. 通过json配置生成表单，依赖父项目的ElementUI库
 2. 通过按钮组插槽，生成自定义按钮组
 3. 可以通过自定义field，生成复杂的表单输入项
 
@@ -45,6 +45,7 @@ emit所有的事件如下：
         :schema="schema"
         :hasExpand="false"
         @on-submit="handlerSubmit"
+        @on-validation-failed="handlerValidationFailed"
         @on-cancel="handlerCancel"
         @on-change="handlerChange"
     >
@@ -55,10 +56,17 @@ emit所有的事件如下：
 export default {
     name: 'Demo',
     methods: {
-        handlerSubmit() {
-            const vNode = this.$createElement('pre', JSON.stringify(this.formData, null, 4));
+        handlerSubmit(params) {
+            const vNode = this.$createElement('pre', JSON.stringify(params, null, 4));
             this.$message({
                 type: 'success',
+                message: vNode
+            });
+        },
+        handlerValidationFailed(params) {
+            const vNode = this.$createElement('pre', JSON.stringify(params, null, 4));
+            this.$message({
+                type: 'warning',
                 message: vNode
             });
         },
@@ -80,10 +88,18 @@ export default {
             },
             schema: {
                 type: 'object',
+                required: [
+                    'userName',
+                    'age',
+                ],
                 properties: {
                     name: {
                         title: '输入名字',
                         type: 'string'
+                    },
+                    age: {
+                        type: 'number',
+                        title: '年龄'
                     }
                 }
             }
