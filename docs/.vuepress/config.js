@@ -11,7 +11,7 @@ module.exports = {
           require('./plugins/demo-container/src'),
           {
               elementVersion: '2.15.1',
-              vjsfVersion: '0.1.0'
+              vjsfVersion: '1.4.0'
           }
       ],
       [
@@ -38,9 +38,9 @@ module.exports = {
       {
         title: '组件',
         collapsable: false,
-        children: ['/guide/mlsCommonForm.md']
+        children: ['/guide/mlsCommonForm.md', '/guide/mlsCommonTable.md']
       }
     ],
-    sidebarDepth : 2
+    sidebarDepth : 3
   }
 }

@@ -16,6 +16,57 @@ MlsCommonForm组件是由[Vue JSON Schema Form](https://vue-json-schema-form.llj
 * 类型：`right | bottom`
 * 默认值：`right`  
 按钮组位置, bottom:底部  right:右边
+::: demo
+```html
+<template>
+    <el-radio-group v-model="position" style="margin-bottom: 20px;">
+        <el-radio-button label="right">right</el-radio-button>
+        <el-radio-button label="bottom">bottom</el-radio-button>
+    </el-radio-group>
+    <mls-common-form
+        v-model="formData"
+        :schema="schema"
+        :hasExpand="false"
+        :buttonGroupPosition="position"
+    >
+    </mls-common-form>
+</template>
+
+<script>
+export default {
+    name: 'Demo',
+    methods: {
+
+    },
+    data() {
+        return {
+            formData: {
+               name: 'xigua'
+            },
+            schema: {
+                type: 'object',
+                required: [
+                    'userName',
+                    'age',
+                ],
+                properties: {
+                    name: {
+                        title: '输入名字',
+                        type: 'string'
+                    },
+                    age: {
+                        type: 'number',
+                        title: '年龄'
+                    }
+                }
+            },
+            position: 'right'
+        }
+    }
+};
+</script>
+```
+:::
 
 ### submitText
 * 类型：`string`
@@ -31,6 +82,67 @@ MlsCommonForm组件是由[Vue JSON Schema Form](https://vue-json-schema-form.llj
 * 类型：`boolean`
 * 默认值：`true`  
 按钮组是否有展开/收起按钮，true: 有   false: 无
+:::tip
+`uiSchema`的`ui:options`里的属性及`ui:canBeClose`这样写法的属性，都可以直接传到`mls-common-form`组件中的`form-item`组件。可以通过`ui:style:{color: 'red'}`的方式，修改组件的样式及属性
+:::
+::: demo
+```html
+<template>
+    <mls-common-form
+        v-model="formData"
+        :uiSchema="uiSchema"
+        :schema="schema"
+    >
+    </mls-common-form>
+</template>
+
+<script>
+export default {
+    name: 'Demo',
+    data() {
+        return {
+            formData: {},
+            schema: {
+                type: 'object',
+                required: [
+                    'userName',
+                    'age',
+                ],
+                properties: {
+                    userName: {
+                        type: 'string',
+                        title: '用户名',
+                        default: 'xigua',
+                    },
+                    age: {
+                        type: 'number',
+                        title: '年龄'
+                    },
+                    bio: {
+                        type: 'string',
+                        title: '签名',
+                        minLength: 10,
+                        default: '知道的越多、就知道的越少',
+                    }
+                }
+            },
+            uiSchema: {
+                bio: {
+                    'ui:options': {
+                        placeholder: '请输入你的签名',
+                        type: 'textarea',
+                        rows: 1
+                        // canBeClose: true // 这样写跟下面ui:canBeClose的写法效果一样
+                    },
+                    'ui:canBeClose': true // 这个参数表示这个项可以被收起
+                }
+            }
+        };
+    }
+};
+</script>
+```
+:::
 
 ### Vue JSON Sechema Form组件原有的props
 * 可以传入所有VueForm的props，例如：schema,ui-schema,form-props等，详细说明请查看[文档](https://vue-json-schema-form.lljj.me/zh/guide/basic-config.html#%E5%8F%82%E6%95%B0-props)

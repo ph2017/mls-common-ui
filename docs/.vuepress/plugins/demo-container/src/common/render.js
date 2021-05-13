@@ -9,11 +9,22 @@ module.exports = function (content) {
   if (!content) {
     return content
   }
+  
+  // // TODO 删除不需要显示的代码段，很low的做法，待优化 2021-05-10
+  // const sourceStartTag = '<!--beforebegin-->'
+  // const sourceEndTag = '<!--beforeend-->'
+  // const sourceStart = content.indexOf(sourceStartTag)
+  // const sourceEnd = content.indexOf(sourceEndTag, sourceStart + sourceStartTag.length)
+  // const sourceContent = content.slice(sourceStart + sourceStartTag.length, sourceEnd)
+  // if (sourceContent.indexOf('noDisplay') > -1) {
+  //   // 查找是否有noDisplay，有则替换掉
+  //   content = content.replace(sourceContent, '<div class="language- extra-class"><!--afterbegin-->')
+  // }
+
   const startTag = '<!--pre-render-demo:';
   const startTagLen = startTag.length;
   const endTag = ':pre-render-demo-->';
   const endTagLen = endTag.length;
-
   let componenetsString = ''; // 组件引用代码
   let templateArr = []; // 模板输出内容
   let styleArr = []; // 样式输出内容

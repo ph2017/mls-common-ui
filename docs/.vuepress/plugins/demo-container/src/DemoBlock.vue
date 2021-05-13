@@ -247,3 +247,24 @@
         }
     };
 </script>
+<style>
+table {
+    margin: 0;
+    display: table;
+}
+th,
+td,
+tr {
+    border: 0;
+}
+.el-popper table {
+    margin: 0;
+    display: table;
+}
+.el-popper th,td,tr {
+    border: 0;
+}
+.el-popper tr:nth-child(2n) {
+    background: none;
+}
+</style>

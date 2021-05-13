@@ -11,5 +11,7 @@ features:
   details: 使用json数据，生成form和table组件
 - title: 统一管理
   details: 为业务开发提供更方便可靠的组件
-footer: MIT Licensed | Copyright © 2021-2021 May billa
+footer: MIT Licensed | Copyright © 2021-2021 May
 ---
+
+#
