@@ -6,8 +6,9 @@
             :column="getColumn"
             v-on="$listeners"
             @selection-change="onTableSelectionChange"
+            @current-change="onTableCurrentChange"
         />
-        <div class="select-info-box">
+        <div :class="getSelectInfoBoxStyle">
             <div class="page-text" v-if="hasSelection">
                 <!-- 已选数量 -->
                 <span>已选数量</span>
@@ -38,7 +39,8 @@ const defaultPaginationConfig = {
     pageSizes: [10, 20, 30, 50, 100],
     layout: 'total, sizes, prev, pager, next',
     pageSize: 10,
-    pagerCount: 5
+    pagerCount: 5,
+    background: true
 }
 /**
  * 二次封装了lb-table组件，
@@ -60,8 +62,13 @@ export default {
         selectedColumn: {
             type: Array
         },
-        // 是否有checkbox单选
+        // 是否有ratio单选
         hasRatioSelect: {
+            type: Boolean,
+            default: false
+        },
+        // 是否有已选中项显示
+        hasSelectedSumary: {
             type: Boolean,
             default: false
         }
@@ -92,10 +99,13 @@ export default {
             }
         },
         hasSelection () {
-            if (this.$attrs.column) {
-                return this.$attrs.column.find(item => item.type === 'selection') || this.hasRatioSelect
+            if (this.hasSelectedSumary) {
+                if (this.$attrs.column) {
+                    return this.$attrs.column.find(item => item.type === 'selection') || this.hasRatioSelect
+                }
+                return this.hasRatioSelect
             }
-            return this.hasRatioSelect
+            return false
         },
         getSelectedTableColumn () {
             let defaultColumn = this.$attrs.column.filter(item => item.type !== 'selection' && item.type !== 'index').slice(0, 3)
@@ -130,7 +140,7 @@ export default {
             if (this.$attrs.column) {
                 column = [...this.$attrs.column]
             }
-            if (this.hasRatioSelect) {
+            if (this.hasRatioSelect && this.$attrs['row-key']) {
                 const ratioColumn = {
                     label: '选择',
                     width: '50',
@@ -149,6 +159,14 @@ export default {
                 column.unshift(ratioColumn)
             }
             return column
+        },
+        // 计算选中数量box的样式
+        getSelectInfoBoxStyle () {
+            let styleClass = 'select-info-box'
+            if (!this.pagination) {
+                styleClass += ' relative-box'
+            }
+            return styleClass
         }
     },
     methods: {
@@ -161,13 +179,23 @@ export default {
             }
         },
         onTableSelectionChange (selection) {
-            console.log('onTableSelectionChange selection = ', selection)
             this.selectedRows = selection // 保存已选中的row
-            this.$emit('selection-change', selection) // 再向父节点发射一个相同的事件
+            // this.$emit('selection-change', selection) // 再向父节点发射一个相同的事件
         },
         onTableRatioChange (row) {
             this.selectedRows = [row]
             this.selectedRowKey = row[this.$attrs['row-key']]
+        },
+        onTableCurrentChange (row) {
+            if (this.hasRatioSelect) {
+                // 有单选的情况下，更新单选
+                this.selectedRows = [row]
+                if (row) {
+                    this.selectedRowKey = row[this.$attrs['row-key']]
+                } else {
+                    this.selectedRowKey = ''
+                }
+            }
         }
     }
 }
@@ -195,6 +223,10 @@ export default {
         }
         .function-button-group {
         }
+    }
+    .relative-box {
+        position: relative;
+        margin-top: 10px;
     }
 }
 .pop-head {
