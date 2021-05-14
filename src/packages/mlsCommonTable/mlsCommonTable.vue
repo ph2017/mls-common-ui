@@ -4,6 +4,7 @@
             ref="table"
             v-bind="{ ...getPaginationConfig, ...getRestConfig, pagination }"
             :column="getColumn"
+            highlight-current-row
             v-on="$listeners"
             @selection-change="onTableSelectionChange"
             @current-change="onTableCurrentChange"
@@ -180,20 +181,19 @@ export default {
         },
         onTableSelectionChange (selection) {
             this.selectedRows = selection // 保存已选中的row
-            // this.$emit('selection-change', selection) // 再向父节点发射一个相同的事件
         },
         onTableRatioChange (row) {
-            this.selectedRows = [row]
+            this.selectedRows = [{...row}]
             this.selectedRowKey = row[this.$attrs['row-key']]
         },
         onTableCurrentChange (row) {
+            // 单选默认是跨页的
             if (this.hasRatioSelect) {
                 // 有单选的情况下，更新单选
-                this.selectedRows = [row]
-                if (row) {
+                if (typeof row === 'object') {
+                    // row 为object类型时才处理， 翻页情况下，row 会是number
+                    this.selectedRows =[{...row}]
                     this.selectedRowKey = row[this.$attrs['row-key']]
-                } else {
-                    this.selectedRowKey = ''
                 }
             }
         }
