@@ -15,7 +15,8 @@ footer: MIT Licensed | Copyright © 2021-2021 May
 ---
 
 ## Demo
-:::demo showCode
+这是个使用mlsCommonForm和mlsCommonTable组件写的简单报表页面[示例代码地址](https://github.com/ph2017/mls-common-ui/tree/main/docs/.vuepress/components/demoPage)
+:::demo
 ```html
 <demo-page />
 ```
