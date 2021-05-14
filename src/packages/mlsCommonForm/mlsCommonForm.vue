@@ -205,6 +205,11 @@ export default {
             display: flex;
             align-items: flex-start;
         }
+        .el-form.formInline {
+            .fieldGroupWrap {
+                flex-basis: inherit; // formProps.inline:true 情况下生效，不设置默认占比
+            }
+        }
     }
     &.button-group-box--bottom {
         .el-form {
