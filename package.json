@@ -43,6 +43,7 @@
     "url" : "https://github.com/ph2017/mls-common-ui"
   },
   "homepage": "https://ph2017.github.io/mls-common-ui/dist/",
+  "keywords": ["Vue","ElementUI","@lljj/vue-json-schema-form"],
   "eslintConfig": {
     "root": true,
     "env": {
