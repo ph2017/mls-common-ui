@@ -14,4 +14,9 @@ features:
 footer: MIT Licensed | Copyright © 2021-2021 May
 ---
 
-#
+## Demo
+:::demo showCode
+```html
+<demo-page />
+```
+:::

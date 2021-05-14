@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@lljj/vue-json-schema-form": "^1.4.0",
-    "element-ui": "^2.15.1"
+    "element-ui": "^2.15.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
