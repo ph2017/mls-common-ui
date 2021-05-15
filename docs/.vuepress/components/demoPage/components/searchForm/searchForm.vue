@@ -81,7 +81,7 @@ export default {
                         title: '有效',
                         type: 'string',
                         'ui:widget': 'RadioWidget',
-                        enum: ['all', 1, 2],
+                        enum: ['all', 'y', 'n'],
                         enumNames: ['全部','是','否']
                     },
                     hobby: {
