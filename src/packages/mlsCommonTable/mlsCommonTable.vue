@@ -190,10 +190,14 @@ export default {
             // 单选默认是跨页的
             if (this.hasRatioSelect) {
                 // 有单选的情况下，更新单选
-                if (typeof row === 'object') {
+                if (typeof row === 'object' && row !== null) {
                     // row 为object类型时才处理， 翻页情况下，row 会是number
                     this.selectedRows =[{...row}]
                     this.selectedRowKey = row[this.$attrs['row-key']]
+                } else if (row === null) {
+                    // row 为null时，是取消选择的情况
+                    this.selectedRows =[]
+                    this.selectedRowKey = ''
                 }
             }
         }
