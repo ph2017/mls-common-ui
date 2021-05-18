@@ -142,7 +142,6 @@ export default {
         onBatchDelete() {
             if (this.selectRows.length > 0) {
                 this.deleteRows = uniq([...this.selectRows.map(r => r.name), ...this.deleteRows])
-                console.log('onBatchDelete deleteRows = ', this.deleteRows)
                 this.selectRows.forEach(item => {
                     item.deleteFlag = true
                     this.$refs['mlsTable'].$refs['table'].toggleRowSelection(item, false) // 取消选中
