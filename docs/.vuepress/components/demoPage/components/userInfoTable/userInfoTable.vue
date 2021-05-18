@@ -79,6 +79,7 @@ export default {
                                 onChange={(val) => { 
                                     scope.row[scope.column.property] = val
                                     this.setRowDeleteFlag(scope.row.name, val)
+                                    this.$refs.mlsTable.$refs.table.toggleRowSelection(scope.row, false)
                                 }}
                                 active-color="#F56C6C"
                                 active-text="无效"

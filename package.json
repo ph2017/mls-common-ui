@@ -1,6 +1,6 @@
 {
   "name": "mls-common-ui",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "mls项目的公共组件库",
   "private": false,
   "main": "lib/@yueyun/mls-common-ui.common.js",
@@ -38,6 +38,12 @@
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.4"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/ph2017/mls-common-ui"
+  },
+  "homepage": "https://ph2017.github.io/mls-common-ui/dist/",
+  "keywords": ["Vue","ElementUI","@lljj/vue-json-schema-form"],
   "eslintConfig": {
     "root": true,
     "env": {

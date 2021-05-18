@@ -1,7 +1,9 @@
 import MlsCommonForm from './mlsCommonForm'
+import MlsCommonTable from './mlsCommonTable'
 
 const components = [
-  MlsCommonForm
+  MlsCommonForm,
+  MlsCommonTable
 ]
 
 // 定义 install 方法
@@ -18,14 +20,10 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-// export default {
-//   // 导出的对象必须具备一个 install 方法
-//   install,
-//   // 组件列表
-//   ...components
-// }
-
+// 不能export default {}
 export {
+  // 导出的对象必须具备一个 install 方法
   install,
-  MlsCommonForm
-};
+  MlsCommonForm,
+  MlsCommonTable
+}
