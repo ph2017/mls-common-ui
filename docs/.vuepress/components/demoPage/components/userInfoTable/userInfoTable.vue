@@ -142,12 +142,11 @@ export default {
         },
         onBatchDelete() {
             if (this.selectRows.length > 0) {
-                this.selectRows.forEach(item => { 
+                this.deleteRows = uniq([...this.selectRows.map(r => r.name), ...this.deleteRows])
+                this.selectRows.forEach(item => {
                     item.deleteFlag = true
                     this.$refs['mlsTable'].$refs['table'].toggleRowSelection(item, false) // 取消选中
                 })
-                this.deleteRows = uniq([...this.selectRows.map(r => r.name), ...this.deleteRows])
-                
                 this.$message.success('批量删除成功')
             } else {
                 this.$message.error('请先选择要删除的行')

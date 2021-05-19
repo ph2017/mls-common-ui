@@ -70,7 +70,7 @@ export default {
                         title: '地址'
                     },
                     date: {
-                        title: '日期开始-日期时间',
+                        title: '日期开始-日期结束',
                         type: 'array',
                         format: 'date-time',
                         items: {
