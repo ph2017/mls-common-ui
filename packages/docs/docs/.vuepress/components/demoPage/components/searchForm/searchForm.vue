@@ -27,11 +27,10 @@
     </div>
 </template>
 <script>
-import { MlsCommonForm, InputSearchField, InputEnterField } from 'mls-common-ui'
-// import InputSearchField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/inputSearchField'
-// import InputEnterField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/InputEnterField'
-// import { InputSearchField } from 'mls-common-ui'
-// import { InputEnterField } from 'mls-common-ui'
+// import { MlsCommonForm, InputSearchField, InputEnterField } from 'mls-common-ui'
+import MlsCommonForm from '../../../../../../../mls-common-ui/packages/mlsCommonForm'
+import InputSearchField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/inputSearchField'
+import InputEnterField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/InputEnterField'
 import HobbySearchDialog from '../hobbySearchDialog'
 import Vue from 'vue'
 Vue.component(InputEnterField.name, InputEnterField)
@@ -190,7 +189,7 @@ export default {
             }
         },
         onInputFieldEnter (params) {
-            console.log('onInputFieldEnter params = ', params)
+            console.log('searchForm onInputFieldEnter params = ', params)
         },
         onInputFieldSearch (params) {
             if (params.fieldKey === 'hobby') {
