@@ -30,7 +30,6 @@ import InputSearchField from './components/inputSearchField'
 import Vue from 'vue'
 Vue.component(InputEnterField.name, InputEnterField)
 Vue.component(InputSearchField.name, InputSearchField)
-const eventBus = new Vue() // 私有的事件总线
 
 const defaultFormProps = {
     layoutColumn: 1, // 1~5 ，支持 1~5 列布局，如果使用inline表单这里配置无效
@@ -111,8 +110,10 @@ export default {
             return `button-group-box--${this.buttonGroupPosition}`
         }
     },
-    provide: {
-        formEventBus: eventBus
+    provide() {
+        return {
+            formEventBus: this // form组件实例作为事件总线
+        }
     },
     data () {
         return {
@@ -130,13 +131,12 @@ export default {
     },
     created () {
         this.$on('submit', this.submitHandler)
-        eventBus.$on('customEmitEvent', debounce((params) => {
+        this.$on('customFieldEmitEvent', debounce((params) => {
             this.$emit('customEmitEvent', params)
         }, 200))
     },
     beforeDestroy () {
-        eventBus.$off(['customEmitEvent'])
-        eventBus.$destroy() // 销毁事件总线
+        this.$off(['customFieldEmitEvent'])
     },
     methods: {
         onFormMounted (formRef) {

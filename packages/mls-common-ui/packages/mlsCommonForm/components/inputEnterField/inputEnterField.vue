@@ -80,7 +80,7 @@ export default {
         },
         onEnter (event) {
             const validate = this.inputValidate(this.inputModel)
-            this.formEventBus.$emit('customEmitEvent', {
+            this.formEventBus.$emit('customFieldEmitEvent', {
                 data: this.inputModel,
                 fieldKey: this.curNodePath,
                 event,
