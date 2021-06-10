@@ -1,0 +1,88 @@
+<template>
+    <div class="workorder-search-form">
+        <mls-common-form
+            ref="mlsForm"
+            v-model="formData"
+            :schema="schema"
+            :uiSchema="uiSchema"
+            :custom-formats="customFormats"
+            :error-schema="errorSchema"
+            :formProps="formProps"
+            :hasExpand="false"
+            submitText="查询"
+            buttonGroupPosition="right"
+            v-on="$listeners"
+            @on-submit="onFormSubmit"
+            @on-cancel="onReset"
+            @customEmitEvent="onCustomEmitEvent"
+        >
+        </mls-common-form>
+    </div>
+</template>
+<script>
+import { MlsCommonForm, InputEnterField } from 'mls-common-ui'
+import Vue from 'vue'
+Vue.component(InputEnterField)
+const defaultFormData = {
+}
+export default {
+    name: 'WorkorderSearchForm',
+    components: {
+        MlsCommonForm
+    },
+    props: {
+        workOrderName: {
+            type: String
+        }
+    },
+    data () {
+        return {
+            formData: {
+                ...defaultFormData
+            },
+            schema: {
+                type: 'object',
+                required: ['startTime'],
+                properties: {
+                    hobby: {
+                        type: 'string',
+                        title: '爱好'
+                    }
+                }
+            },
+            uiSchema: {
+                hobby: {
+                    'ui:field': 'InputEnterField',
+                    'ui:placeholder': '请输入爱好'
+                }
+            },
+            customFormats: {},
+            errorSchema: {},
+            formProps: {
+                // layoutColumn: '1'
+                inline: true
+            }
+        }
+    },
+    methods: {
+        onFormSubmit (params) {
+            this.$emit('search', params)
+        },
+        onReset () {
+            this.formData = { ...defaultFormData }
+        },
+        onValidationFailed (err) {
+            console.log('onValidationFailed err = ', err)
+        },
+        onInputFieldEnter (params) {
+            console.log('onInputFieldEnter params = ', params)
+        },
+        onCustomEmitEvent (params) {
+            console.log('hobbySearch onCustomEmitEvent params = ', params)
+            if (params.emitEvent === 'inputSearchFieldEnter') {
+                this.onInputFieldEnter(params)
+            }
+        }
+    }
+}
+</script>
