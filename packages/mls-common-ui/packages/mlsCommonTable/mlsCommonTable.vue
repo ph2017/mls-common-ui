@@ -12,10 +12,11 @@
         <div :class="getSelectInfoBoxStyle">
             <div class="page-text" v-if="hasSelection">
                 <!-- 已选数量 -->
-                <span>已选数量</span>
+                <span>{{ selectedTitleText }}</span>
                 <el-popover placement="top" width="400" trigger="manual" ref="selectPopover" v-model="visible">
                     <div class="pop-head">
-                        <span class="title">已选项详情</span>
+                        <!-- 已选项详情 -->
+                        <span class="title">{{ selectedDetailTitleText }}</span>
                         <i class="el-icon-close close" @click="visible = !visible"></i>
                     </div>
                     <lb-table :column="getSelectedTableColumn" :data="selectedRows" border />
@@ -23,7 +24,8 @@
                 <el-link v-popover:selectPopover type="primary" class="selected-num" @click="visible = !visible">{{
                     checkedNum
                 }}</el-link>
-                <span>个</span>
+                <!-- 个 -->
+                <span>{{ itemUnitText }}</span>
             </div>
             <slot name="selectButtonSlot" class="function-button-group">
                 <!-- 这里可以放按钮或其他组件 -->
@@ -73,6 +75,30 @@ export default {
         hasSelectedSumary: {
             type: Boolean,
             default: false
+        },
+        selectedTitleText: {
+            type: String,
+            default: '已选数量'
+        },
+        selectedDetailTitleText: {
+            type: String,
+            default: '已选项详情'
+        },
+        itemUnitText: {
+            type: String,
+            default: '个'
+        },
+        operationColText: {
+            type: String,
+            default: '操作'
+        },
+        cancelSelectText: {
+            type: String,
+            default: '取消选中'
+        },
+        selectText: {
+            type: String,
+            default: '选择'
         }
     },
     data () {
@@ -115,13 +141,13 @@ export default {
                 defaultColumn = [...this.selectedColumn]
             }
             defaultColumn.push({
-                label: '操作',
+                label: this.operationColText, // '操作'
                 fixed: 'right',
                 render: (h, scope) => {
                     return (
                         <div>
                             <el-button type='text' onClick={() => this.onUnselectItem(scope.row)}>
-                                取消选中
+                                {this.cancelSelectText}
                             </el-button>
                         </div>
                     )
@@ -144,7 +170,7 @@ export default {
             }
             if (this.hasRatioSelect && this.$attrs['row-key']) {
                 const ratioColumn = {
-                    label: '选择',
+                    label: this.selectText, // 选择
                     width: '50',
                     fixed: true,
                     render: (h, scope) => {
@@ -195,10 +221,6 @@ export default {
                     // row 为object类型时才处理， 翻页情况下，row 会是number
                     this.selectedRows =[{...row}]
                     this.selectedRowKey = row[this.$attrs['row-key']]
-                } else if (row === null) {
-                    // row 为null时，是取消选择的情况
-                    this.selectedRows =[]
-                    this.selectedRowKey = ''
                 }
             }
         }
