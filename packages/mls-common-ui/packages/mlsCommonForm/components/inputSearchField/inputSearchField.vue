@@ -5,11 +5,19 @@
             :prop="curNodePath"
             :rules="[
                 {
-                    valiidator (rule, value, callback) {
-                        const { errors, isValidate } = inputValidate(value)
-                        if (isValidate) return callback()
-                        return callback(errors[0].message)
-                    }
+                    validator(rule, value, callback) {
+                        const errors = schemaValidate.validateFormDataAndTransformMsg({
+                            formData: value,
+                            schema: $props.rootSchema.properties[$props.curNodePath],
+                            customFormats: $props.customFormats,
+                            errorSchema: $props.errorSchema,
+                            required: $props.rootSchema.required.includes($props.curNodePath),
+                            propPath: $props.curNodePath
+                        });
+                        if (errors.length === 0) return callback();
+
+                        return callback(errors[0].message);
+                    },
                 }
             ]"
             :required="elItemRequired"
@@ -43,7 +51,7 @@ export default {
     computed: {
         elItemRequired () {
             // 配置了 required 的属性提示小红点
-            return this.schema.required
+            return this.rootSchema.required.indexOf(this.curNodePath) > -1;
         },
         selectProps () {
             return formUtils.getUiOptions({
@@ -65,37 +73,18 @@ export default {
     },
     created () {},
     methods: {
-        inputValidate (value) {
-            const errors = schemaValidate.validateFormDataAndTransformMsg({
-                formData: value,
-                schema: this.schema,
-                customFormats: this.customFormats,
-                errorSchema: this.errorSchema,
-                required: this.schema.required,
-                propPath: this.curNodePath
-            })
-            const isValidate = errors.length <= 0
-            return {
-                errors,
-                isValidate
-            }
-        },
         onEnter (event) {
-            const validate = this.inputValidate(this.inputModel)
             this.formEventBus.$emit('customFieldEmitEvent', {
                 data: this.inputModel,
                 fieldKey: this.curNodePath,
                 event,
-                validate,
                 emitEvent: 'inputSearchFiledEnter'
             })
         },
         onSearch () {
-            const validate = this.inputValidate(this.inputModel)
             this.formEventBus.$emit('customFieldEmitEvent', {
                 data: this.inputModel,
                 fieldKey: this.curNodePath,
-                validate,
                 emitEvent: 'inputSearchFieldSearch'
             })
         }
