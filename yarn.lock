@@ -943,27 +943,27 @@
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
 
-"@lljj/vjsf-utils@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npm.taobao.org/@lljj/vjsf-utils/download/@lljj/vjsf-utils-1.3.0.tgz#866a11b85f1e57ddd04c8128cb91c52ed3843283"
-  integrity sha1-hmoRuF8eV93QTIEoy5HFLtOEMoM=
+"@lljj/vjsf-utils@1.6.2":
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/@lljj/vjsf-utils/-/vjsf-utils-1.6.2.tgz#677028aed844eec4e87384e115f6ea20a12b57bd"
+  integrity sha512-RFQn3EdXUqKXy82EsbaKO740pdVXyonoXpVdYfdtbiuHdVBTMj9TQULscuvYLEenbdOKFdmiKQtVbkN9HR5D+A==
   dependencies:
     ajv "^6.10.2"
 
-"@lljj/vue-json-schema-form@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.nlark.com/@lljj/vue-json-schema-form/download/@lljj/vue-json-schema-form-1.4.0.tgz#858f7430f4899a43abc0b001e72e16c8c37e0502"
-  integrity sha1-hY90MPSJmkOrwLAB5y4WyMN+BQI=
+"@lljj/vue-json-schema-form@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/@lljj/vue-json-schema-form/-/vue-json-schema-form-1.6.2.tgz#68c4644836f166329a37083bb4102b0e95fe29ff"
+  integrity sha512-VDrGJapsVPEyYzgKcT3/d/Xcb0UBj37nryCh51vl46zJHsTkTxXTDhgIDbTrrxgN6KMiy0BCNIdEsvlj/zSbLQ==
   dependencies:
-    "@lljj/vjsf-utils" "1.3.0"
-    "@lljj/vue2-form-core" "1.4.0"
+    "@lljj/vjsf-utils" "1.6.2"
+    "@lljj/vue2-form-core" "1.6.2"
 
-"@lljj/vue2-form-core@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.nlark.com/@lljj/vue2-form-core/download/@lljj/vue2-form-core-1.4.0.tgz#610abe0a52577670fde07c52f7baf331d2da07ba"
-  integrity sha1-YQq+ClJXdnD94HxS97rzMdLaB7o=
+"@lljj/vue2-form-core@1.6.2":
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/@lljj/vue2-form-core/-/vue2-form-core-1.6.2.tgz#244eb70b5e7fcc5c536c391f065088606c22e0a5"
+  integrity sha512-hSA5OPqaWV3giY11T2YfINJgKKQLeckn3xEzhxei+RfwdJjOI9DVcy4ssdZnemjoVvcJJuk6RpluqL32x3E8fA==
   dependencies:
-    "@lljj/vjsf-utils" "1.3.0"
+    "@lljj/vjsf-utils" "1.6.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -3142,6 +3142,11 @@ core-js@^2.4.0:
   version "2.6.12"
   resolved "http://npm.midea.com:8090/repository/npm-public/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
+
+core-js@^3.15.2:
+  version "3.15.2"
+  resolved "https://registry.nlark.com/core-js/download/core-js-3.15.2.tgz?cache=0&sync_timestamp=1624966102256&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcore-js%2Fdownload%2Fcore-js-3.15.2.tgz#740660d2ff55ef34ce664d7e2455119c5bdd3d61"
+  integrity sha1-dAZg0v9V7zTOZk1+JFURnFvdPWE=
 
 core-js@^3.6.4, core-js@^3.6.5:
   version "3.11.2"
@@ -5981,6 +5986,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.npm.taobao.org/lodash-es/download/lodash-es-4.17.21.tgz?cache=0&sync_timestamp=1613835893273&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash-es%2Fdownload%2Flodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha1-Q+YmxG5lkbd1C+srUBFzkMYJ4+4=
+
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "http://npm.midea.com:8090/repository/npm-public/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -6041,7 +6051,7 @@ lodash.uniq@^4.5.0:
   resolved "http://npm.midea.com:8090/repository/npm-public/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.3, lodash@^4.17.5:
+lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.3, lodash@^4.17.5:
   version "4.17.21"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1613835838133&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
@@ -6419,6 +6429,12 @@ mkdirp@~1.0.4:
   version "1.0.4"
   resolved "http://npm.midea.com:8090/repository/npm-public/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+"mls-common-ui@file:packages/mls-common-ui":
+  version "0.2.6"
+  dependencies:
+    "@lljj/vue-json-schema-form" "^1.6.2"
+    lodash-es "^4.17.21"
 
 moment@^2.29.1:
   version "2.29.1"

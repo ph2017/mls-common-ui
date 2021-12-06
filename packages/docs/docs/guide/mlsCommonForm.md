@@ -186,6 +186,7 @@ export default {
             this.$message.warning('点击了重置');
         },
         handlerChange({ oldValue, newValue }) {
+            console.log('旧数据 = ', oldValue)
             const vNode = this.$createElement('pre', JSON.stringify(newValue, null, 4));
             this.$notify({
                 title: '输入数据',

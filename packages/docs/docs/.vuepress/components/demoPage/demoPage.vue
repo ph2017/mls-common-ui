@@ -23,7 +23,7 @@
 import SearchForm from './components/searchForm'
 import UserInfoTable from './components/userInfoTable'
 import moment from 'moment'
-import { omit } from 'lodash'
+import { omit } from 'lodash-es'
 const defaultDateFormat = 'YYYY-MM-DD HH:mm:ss'
 
 export default {

@@ -23,7 +23,7 @@
     </div>
 </template>
 <script>
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash-es'
 import VueForm from '@lljj/vue-json-schema-form'
 import InputEnterField from './components/inputEnterField'
 import InputSearchField from './components/inputSearchField'

@@ -19,7 +19,8 @@
                         <span class="title">{{ selectedDetailTitleText }}</span>
                         <i class="el-icon-close close" @click="visible = !visible"></i>
                     </div>
-                    <lb-table :column="getSelectedTableColumn" :data="selectedRows" border />
+                    <!-- 设置最大高度 -->
+                    <lb-table :column="getSelectedTableColumn" :data="selectedRows" border :max-height="300"/>
                 </el-popover>
                 <el-link v-popover:selectPopover type="primary" class="selected-num" @click="visible = !visible">{{
                     checkedNum
@@ -35,8 +36,7 @@
 </template>
 <script>
 import LbTable from './lb-table'
-import pick from 'lodash/pick'
-import omit from 'lodash/omit'
+import { pick, omit } from 'lodash-es'
 
 // 分页组件默认配置
 const defaultPaginationConfig = {
@@ -136,9 +136,15 @@ export default {
             return false
         },
         getSelectedTableColumn () {
-            let defaultColumn = this.$attrs.column.filter(item => item.type !== 'selection' && item.type !== 'index').slice(0, 3)
+            let defaultColumn = []
             if (this.selectedColumn) {
                 defaultColumn = [...this.selectedColumn]
+            } else {
+                defaultColumn = this.$attrs.column.filter(item => item.type !== 'selection' && item.type !== 'index').slice(0, 3).map(item => {
+                    return {
+                        ...omit(item, ['render']) // 清除所有的render字段，只显示，不渲染编辑的内容 2021-07-12
+                    }
+                })
             }
             defaultColumn.push({
                 label: this.operationColText, // '操作'
@@ -204,6 +210,7 @@ export default {
             } else if (this.hasRatioSelect) {
                 this.selectedRows = []
                 this.selectedRowKey = ''
+                this.$refs['table'].setCurrentRow(); // 修复bug，取消选中行
             }
         },
         onTableSelectionChange (selection) {

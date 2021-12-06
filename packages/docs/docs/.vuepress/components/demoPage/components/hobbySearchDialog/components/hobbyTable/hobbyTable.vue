@@ -17,8 +17,8 @@
     ></mls-common-table>
 </template>
 <script>
-import { MlsCommonTable } from 'mls-common-ui'
-
+// import { MlsCommonTable } from 'mls-common-ui'
+import MlsCommonTable from '../../../../../../../../../mls-common-ui/packages/mlsCommonTable'
 export default {
     name: 'WorkorderTable',
     components: {

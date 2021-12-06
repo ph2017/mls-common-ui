@@ -24,7 +24,7 @@
 <script>
 import { MlsCommonTable } from 'mls-common-ui'
 import moment from 'moment'
-import { uniq } from 'lodash'
+import { uniq } from 'lodash-es'
 export default {
     name: 'UserInfoTable',
     components: {

@@ -27,10 +27,10 @@
     </div>
 </template>
 <script>
-// import { MlsCommonForm, InputSearchField, InputEnterField } from 'mls-common-ui'
-import MlsCommonForm from '../../../../../../../mls-common-ui/packages/mlsCommonForm'
-import InputSearchField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/inputSearchField'
-import InputEnterField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/InputEnterField'
+import { MlsCommonForm, InputSearchField, InputEnterField } from 'mls-common-ui'
+// import MlsCommonForm from '../../../../../../../mls-common-ui/packages/mlsCommonForm'
+// import InputSearchField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/inputSearchField'
+// import InputEnterField from '../../../../../../../mls-common-ui/packages/mlsCommonForm/components/InputEnterField'
 import HobbySearchDialog from '../hobbySearchDialog'
 import Vue from 'vue'
 Vue.component(InputEnterField.name, InputEnterField)
